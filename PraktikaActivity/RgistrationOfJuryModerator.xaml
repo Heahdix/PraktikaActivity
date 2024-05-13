@@ -30,35 +30,37 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Регистрация жюри/модератора"/>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="IdNumber: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="ФИО: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="ПОЛ: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Пол: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Роль: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Email: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Телефон: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Направление: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="9" Grid.Column="0" Text="Мероприятие: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" IsEnabled="False"/>
-        <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <ComboBox Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <ComboBox Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <TextBox Grid.Row="7" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <CheckBox Grid.Row="8" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Content="Прикрепить к мероприятию"/>
-        <ComboBox Grid.Row="9" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" IsEnabled="False" Name="NumberId" Text="{Binding Id}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Text="{Binding FullName}" Name="FIO"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="GenderComboBox" DisplayMemberPath="Gender"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="RoleComboBox" DisplayMemberPath="RoleName"/>
+        <TextBox Grid.Row="5" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Text="{Binding Email}" Name="Email"/>
+        <TextBox Grid.Row="6" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Text="{Binding PhoneNumber}" Name="PhoneNumber"/>
+        <ComboBox Grid.Row="7" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="DirectionComboBox" DisplayMemberPath="DirectionName"/>
+        <CheckBox Grid.Row="8" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Content="Прикрепить к мероприятию" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+        <ComboBox Grid.Row="9" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="ActivityComboBox" IsEnabled="False" DisplayMemberPath="EventName"/>
 
         <TextBlock Grid.Row="7" Grid.Column="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Пароль: "/>
         <TextBlock Grid.Row="8" Grid.Column="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Повтор пароля: "/>
         <CheckBox Grid.Row="9" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 4 0"/>
 
-        <Image Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Height="200" Width="180" HorizontalAlignment="Left" Margin="30 0 0 0"/>
+        <Border  Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Height="200" Width="180" HorizontalAlignment="Left" Margin="30 0 0 0" BorderThickness="2" BorderBrush="Black">
+            <Image MouseDown="Image_MouseDown" Name="UserImage"/>
+        </Border>
 
-        <TextBox Grid.Row="7" Grid.Column="3" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
-        <TextBox Grid.Row="8" Grid.Column="3" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240"/>
+        <PasswordBox Grid.Row="7" Grid.Column="3" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="UserPasswordBox"/>
+        <PasswordBox Grid.Row="8" Grid.Column="3" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="RepeatPassword"/>
         <TextBlock Grid.Row="9" Grid.Column="3" FontSize="16" HorizontalAlignment="left" VerticalAlignment="Center" Text="Показывать пароль"/>
 
         <UniformGrid Columns="2" Grid.Row="10" Grid.Column="3">
-            <Button Content="Ок" Margin="2"/>
+            <Button Content="Ок" Margin="2" Click="Button_Click"/>
             <Button Content="Отмена" Margin="2"/>
         </UniformGrid>
     </Grid>

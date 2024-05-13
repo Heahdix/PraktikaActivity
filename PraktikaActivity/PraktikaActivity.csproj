@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyCaptcha.Wpf, Version=0.9.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EasyCaptcha.Wpf.0.9.0.3\lib\net45\EasyCaptcha.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -44,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -103,6 +107,9 @@
     <Compile Include="Moderator.xaml.cs">
       <DependentUpon>Moderator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RgistrationOfJuryModerator.xaml.cs">
       <DependentUpon>RgistrationOfJuryModerator.xaml</DependentUpon>
     </Compile>
@@ -147,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Participant.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,6 +220,96 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\foto70.jpg" />
+    <Resource Include="Resources\foto69.jpg" />
+    <Resource Include="Resources\foto68.jpg" />
+    <Resource Include="Resources\foto67.jpg" />
+    <Resource Include="Resources\foto66.jpg" />
+    <Resource Include="Resources\foto65.jpg" />
+    <Resource Include="Resources\foto64.jpg" />
+    <Resource Include="Resources\foto63.jpg" />
+    <Resource Include="Resources\foto62.jpg" />
+    <Resource Include="Resources\foto61.jpg" />
+    <Resource Include="Resources\foto60.jpg" />
+    <Resource Include="Resources\foto59.jpg" />
+    <Resource Include="Resources\foto58.jpg" />
+    <Resource Include="Resources\foto57.jpg" />
+    <Resource Include="Resources\foto56.jpg" />
+    <Resource Include="Resources\foto55.jpg" />
+    <Resource Include="Resources\foto54.jpg" />
+    <Resource Include="Resources\foto53.jpg" />
+    <Resource Include="Resources\foto52.jpg" />
+    <Resource Include="Resources\foto51.jpg" />
+    <Resource Include="Resources\foto50.jpg" />
+    <Resource Include="Resources\foto49.jpg" />
+    <Resource Include="Resources\foto48.jpg" />
+    <Resource Include="Resources\foto47.jpg" />
+    <Resource Include="Resources\foto46.jpg" />
+    <Resource Include="Resources\foto45.jpg" />
+    <Resource Include="Resources\foto44.jpg" />
+    <Resource Include="Resources\foto43.jpg" />
+    <Resource Include="Resources\foto42.jpg" />
+    <Resource Include="Resources\foto41.jpg" />
+    <Resource Include="Resources\foto40.jpg" />
+    <Resource Include="Resources\foto39.jpg" />
+    <Resource Include="Resources\foto38.jpg" />
+    <Resource Include="Resources\foto37.jpg" />
+    <Resource Include="Resources\foto36.jpg" />
+    <Resource Include="Resources\foto35.jpg" />
+    <Resource Include="Resources\foto34.jpg" />
+    <Resource Include="Resources\foto33.jpg" />
+    <Resource Include="Resources\foto32.jpg" />
+    <Resource Include="Resources\foto31.jpg" />
+    <Resource Include="Resources\foto30.jpg" />
+    <Resource Include="Resources\foto29.jpg" />
+    <Resource Include="Resources\foto28.jpg" />
+    <Resource Include="Resources\foto27.jpg" />
+    <Resource Include="Resources\foto26.jpg" />
+    <Resource Include="Resources\foto25.jpg" />
+    <Resource Include="Resources\foto24.jpg" />
+    <Resource Include="Resources\foto23.jpg" />
+    <Resource Include="Resources\foto22.jpg" />
+    <Resource Include="Resources\foto21.jpg" />
+    <Resource Include="Resources\foto20.jpg" />
+    <Resource Include="Resources\foto19.jpg" />
+    <Resource Include="Resources\foto18.jpg" />
+    <Resource Include="Resources\foto17.jpg" />
+    <Resource Include="Resources\foto16.jpg" />
+    <Resource Include="Resources\foto15.jpg" />
+    <Resource Include="Resources\foto14.jpg" />
+    <Resource Include="Resources\foto13.jpg" />
+    <Resource Include="Resources\foto12.jpg" />
+    <Resource Include="Resources\foto11.jpg" />
+    <Resource Include="Resources\foto10.jpg" />
+    <Resource Include="Resources\foto9.jpg" />
+    <Resource Include="Resources\foto8.jpg" />
+    <Resource Include="Resources\foto7.jpg" />
+    <Resource Include="Resources\foto6.jpg" />
+    <Resource Include="Resources\foto5.jpg" />
+    <Resource Include="Resources\foto4.jpg" />
+    <Resource Include="Resources\foto3.jpg" />
+    <Resource Include="Resources\foto2.jpg" />
+    <Resource Include="Resources\foto1.jpg" />
+    <Resource Include="Resources\20.jpg" />
+    <Resource Include="Resources\19.jpg" />
+    <Resource Include="Resources\18.jpeg" />
+    <Resource Include="Resources\17.jpg" />
+    <Resource Include="Resources\16.jpg" />
+    <Resource Include="Resources\15.jpg" />
+    <Resource Include="Resources\14.png" />
+    <Resource Include="Resources\13.jpg" />
+    <Resource Include="Resources\12.jpg" />
+    <Resource Include="Resources\11.jpg" />
+    <Resource Include="Resources\10.jpg" />
+    <Resource Include="Resources\9.jpg" />
+    <Resource Include="Resources\8.jpeg" />
+    <Resource Include="Resources\7.jpg" />
+    <Resource Include="Resources\6.jpg" />
+    <Resource Include="Resources\5.png" />
+    <Resource Include="Resources\4.jpeg" />
+    <Resource Include="Resources\3.jpeg" />
+    <Resource Include="Resources\2.jpeg" />
+    <Resource Include="Resources\1.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

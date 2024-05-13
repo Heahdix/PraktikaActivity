@@ -46,7 +46,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button Grid.Row="2" Margin="5" Content="Участники" FontSize="16">
+            <Button Grid.Row="2" Margin="5" Content="Участники" FontSize="16" Click="Button_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="15"/>

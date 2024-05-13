@@ -11,7 +11,10 @@ namespace PraktikaActivity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Media.Imaging;
+
     public partial class Events
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,11 +28,40 @@ namespace PraktikaActivity
         public System.DateTime StartDate { get; set; }
         public int Length { get; set; }
         public int CityID { get; set; }
-        public Nullable<int> DirectionId { get; set; }
+        public int DirectionId { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activities> Activities { get; set; }
         public virtual Cities Cities { get; set; }
         public virtual Directions Directions { get; set; }
+
+        public string ImgPath
+        {
+            get
+            {
+                string musicPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Pictures/" + Image);
+                return musicPath;
+            }
+        }
+
+        public string DirectionName
+        {
+            get
+            {
+                using (ActivityEntities db = new ActivityEntities())
+                {
+                    return db.Directions.Where(x=>x.Id == DirectionId).FirstOrDefault().DirectionName;
+                }
+            }
+        }
+
+        public string GetDate
+        {
+            get
+            {
+                return StartDate.ToString("d");
+            }
+        }
     }
 }

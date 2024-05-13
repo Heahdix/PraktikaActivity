@@ -13,5 +13,11 @@ namespace PraktikaActivity
     /// </summary>
     public partial class App : Application
     {
+
+    }
+
+    public class CurrentUser
+    {
+        public static int currentUserId = 1;
     }
 }

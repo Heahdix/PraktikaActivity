@@ -23,5 +23,12 @@ namespace PraktikaActivity
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RgistrationOfJuryModerator rgistrationOfJuryModerator = new RgistrationOfJuryModerator();
+            rgistrationOfJuryModerator.Show();
+            this.Close();
+        }
     }
 }

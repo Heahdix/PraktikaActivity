@@ -47,7 +47,8 @@
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="Length" Type="int" Nullable="false" />
           <Property Name="CityID" Type="int" Nullable="false" />
-          <Property Name="DirectionId" Type="int" />
+          <Property Name="DirectionId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Genders">
           <Key>
@@ -126,7 +127,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Events_Directions">
-          <End Role="Directions" Type="Self.Directions" Multiplicity="0..1" />
+          <End Role="Directions" Type="Self.Directions" Multiplicity="1" />
           <End Role="Events" Type="Self.Events" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Directions">
@@ -353,7 +354,8 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Length" Type="Int32" Nullable="false" />
           <Property Name="CityID" Type="Int32" Nullable="false" />
-          <Property Name="DirectionId" Type="Int32" />
+          <Property Name="DirectionId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_Events" FromRole="Events" ToRole="Activities" />
           <NavigationProperty Name="Cities" Relationship="Self.FK_Events_Cities" FromRole="Events" ToRole="Cities" />
           <NavigationProperty Name="Directions" Relationship="Self.FK_Events_Directions" FromRole="Events" ToRole="Directions" />
@@ -448,7 +450,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Events_Directions">
-          <End Role="Directions" Type="Self.Directions" Multiplicity="0..1" />
+          <End Role="Directions" Type="Self.Directions" Multiplicity="1" />
           <End Role="Events" Type="Self.Events" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Directions">
@@ -630,6 +632,7 @@
                 <ScalarProperty Name="Length" ColumnName="Length" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="DirectionId" ColumnName="DirectionId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

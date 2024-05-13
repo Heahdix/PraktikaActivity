@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:captcha="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
         xmlns:local="clr-namespace:PraktikaActivity"
         mc:Ignorable="d"
         Title="Авторизация" Height="500" Width="800"
@@ -10,11 +11,11 @@
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
         <TextBlock Text="Авторизация" FontSize="30" Margin="15"/>
         <TextBlock Text="IdNumber" FontSize="16" Margin="5"/>
-        <TextBox FontSize="16" Margin="5"/>
+        <TextBox FontSize="16" Margin="5" Name="IdNumberText"/>
         <TextBlock Text="Пароль" FontSize="16" Margin="5"/>
-        <TextBox FontSize="16" Margin="5"/>
-        <Image Height="160" Width="160"/>
-        <TextBox FontSize="16" Margin="5"/>
-        <Button Content="Авторизоваться" FontSize="16" Height="40" Width="150" Margin="15"/>
+        <PasswordBox FontSize="16" Margin="5" Name="PasswordText"/>
+        <captcha:Captcha Name="AuthCaptcha"  Height="160" Width="160"/>
+        <TextBox FontSize="16" Margin="5" Name="Answer"/>
+        <Button Content="Авторизоваться" FontSize="16" Height="40" Width="150" Margin="15" Click="Button_Click"/>
     </StackPanel>
 </Window>
