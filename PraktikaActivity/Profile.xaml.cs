@@ -24,7 +24,7 @@ namespace PraktikaActivity
     {
         private Users users;
 
-        private Regex _phoneNumberRegex = new Regex(@"^\+7\((\d{3})\)\s-\s(\d{3})-(\d{2})-(\d{2})$");
+        private Regex _phoneNumberRegex = new Regex(@"^\+7\((\d{3})\)-(\d{3})-(\d{2})-(\d{2})$");
 
         private string photoName;
         private string filePath;
@@ -152,7 +152,7 @@ namespace PraktikaActivity
         {
             if (FIO.Text != null && Email.Text != null && PhoneNumber.Text != null && UserPasswordBox.Password != null && GenderComboBox.SelectedItem != null)
             {
-                if (IsPhoneNumberValid(PhoneNumber.Text))
+                if (!IsPhoneNumberValid(PhoneNumber.Text))
                 {
                     MessageBox.Show("Введите действительный номер телефона");
                 }
@@ -202,6 +202,31 @@ namespace PraktikaActivity
                             }
 
                             activityEntities.SaveChanges();
+
+                            if (users.RoleId == 1)
+                            {
+                                Participant participant = new Participant();
+                                participant.Show();
+                                this.Close();
+                            }
+                            else if (users.RoleId == 2)
+                            {
+                                Moderator moderator = new Moderator();
+                                moderator.Show();
+                                this.Close();
+                            }
+                            else if (users.RoleId == 3)
+                            {
+                                Jury jury = new Jury();
+                                jury.Show();
+                                this.Close();
+                            }
+                            else if (users.RoleId == 4)
+                            {
+                                Organaizer organaizer = new Organaizer();
+                                organaizer.Show();
+                                this.Close();
+                            }
                         }
                     }
                 }
@@ -231,6 +256,34 @@ namespace PraktikaActivity
                 newPhotoName = i.ToString() + newPhotoName;
             }
             return newPhotoName;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (users.RoleId == 1)
+            {
+                Participant participant = new Participant();
+                participant.Show();
+                this.Close();
+            }
+            else if (users.RoleId == 2)
+            {
+                Moderator moderator = new Moderator();
+                moderator.Show();
+                this.Close();
+            }
+            else if (users.RoleId == 3)
+            {
+                Jury jury = new Jury();
+                jury.Show();
+                this.Close();
+            }
+            else if (users.RoleId == 4)
+            {
+                Organaizer organaizer = new Organaizer();
+                organaizer.Show();
+                this.Close();
+            }
         }
     }
 }

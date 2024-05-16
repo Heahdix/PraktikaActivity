@@ -54,7 +54,7 @@
 
         <StackPanel Grid.ColumnSpan="4" Orientation="Horizontal" Grid.Row="9" Grid.Column="0" HorizontalAlignment="Center">
             <Button Content="Сохранить" Margin="2" Width="200" Click="Button_Click"/>
-            <Button Content="Отмена" Margin="2" Width="200"/>
+            <Button Content="Отмена" Margin="2" Width="200" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>

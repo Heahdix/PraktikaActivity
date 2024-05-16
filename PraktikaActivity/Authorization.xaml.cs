@@ -11,7 +11,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.IO;
 
 namespace PraktikaActivity
 {
@@ -20,12 +20,32 @@ namespace PraktikaActivity
     /// </summary>
     public partial class Authorization : Window
     {
+        public static readonly string appdata = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "userLoginDir");
         string answer = "";
+        int counter = 0;
 
         public Authorization()
         {
             InitializeComponent();
             RemadeCaptcha();
+
+            if (File.Exists(Path.Combine(appdata, "auth.txt")))
+            {
+                var data = File.ReadAllText(Path.Combine(appdata, "auth.txt")).Split(' ');
+                try
+                {
+                    int id = Convert.ToInt32(data[0]);
+                    var user = Authorize(id, data[1]);
+                    if (user != null)
+                    {
+                        OpenUserWindow(user);
+                    }
+                }
+                catch
+                {
+                    
+                }
+            }
         }
 
         private void RemadeCaptcha()
@@ -33,53 +53,92 @@ namespace PraktikaActivity
             AuthCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            counter++;
             using (ActivityEntities db = new ActivityEntities())
             {
+                answer = Answer.Text;
                 if (answer != AuthCaptcha.CaptchaText)
                 {
                     MessageBox.Show("Неверная CAPTCHA");
                 }
                 else
                 {
-                    var result = db.Users.Where(x => x.Id == Convert.ToInt32(IdNumberText.Text) && x.Password == PasswordText.Password).FirstOrDefault();
-                    if (result != null)
+                    int id = 0;
+                    try
                     {
-                        CurrentUser.currentUserId = result.Id;
+                        id = Convert.ToInt32(IdNumberText.Text);
 
-                        if (result.RoleId == 1)
+                        var result = Authorize(id, PasswordText.Password);
+                        if (result != null)
                         {
-                            Participant participant = new Participant();
-                            participant.Show();
-                            this.Close();
+                            OpenUserWindow(result);
                         }
-                        else if (result.RoleId == 2)
+                        else
                         {
-                            Moderator moderator = new Moderator();
-                            moderator.Show();
-                            this.Close();
-                        }
-                        else if (result.RoleId == 3)
-                        {
-                            Jury jury = new Jury();
-                            jury.Show();
-                            this.Close();
-                        }
-                        else if (result.RoleId == 4)
-                        {
-                            Organaizer organaizer = new Organaizer();
-                            organaizer.Show();
-                            this.Close();
+                            MessageBox.Show("Неправильный email или пароль");
                         }
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Неправильный email или пароль");
+                        MessageBox.Show("В поле id было введено не число");
                     }
                 }
             }
-            
+            if (counter % 3 == 0)
+            {
+                this.IsEnabled = false;
+                await Task.Delay(10000);
+                this.IsEnabled = true;
+            }
+        }
+
+        public static Users Authorize(int IdNumber, string Password)
+        {
+            using(ActivityEntities activityEntities = new ActivityEntities())
+            {
+                Users user = activityEntities.Users.Where(x => x.Id == IdNumber && x.Password == Password).FirstOrDefault();
+
+                return user;
+            }
+        }
+
+        public void OpenUserWindow(Users user)
+        {
+            if (!Directory.Exists(appdata))
+            {
+                Directory.CreateDirectory(appdata);
+            }
+
+            File.WriteAllText(Path.Combine(Path.Combine(appdata, "auth.txt")), user.Id + " " + user.Password);
+
+            CurrentUser.currentUserId = user.Id;
+
+            if (user.RoleId == 1)
+            {
+                Participant participant = new Participant();
+                participant.Show();
+                this.Close();
+            }
+            else if (user.RoleId == 2)
+            {
+                Moderator moderator = new Moderator();
+                moderator.Show();
+                this.Close();
+            }
+            else if (user.RoleId == 3)
+            {
+                Jury jury = new Jury();
+                jury.Show();
+                this.Close();
+            }
+            else if (user.RoleId == 4)
+            {
+                Organaizer organaizer = new Organaizer();
+                organaizer.Show();
+                this.Close();
+            }
         }
     }
 }

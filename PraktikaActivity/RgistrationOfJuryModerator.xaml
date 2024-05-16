@@ -37,7 +37,7 @@
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Направление: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="9" Grid.Column="0" Text="Мероприятие: " FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 
-        <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" IsEnabled="False" Name="NumberId" Text="{Binding Id}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" IsEnabled="False" Name="NumberId"/>
         <TextBox Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Text="{Binding FullName}" Name="FIO"/>
         <ComboBox Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="GenderComboBox" DisplayMemberPath="Gender"/>
         <ComboBox Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Name="RoleComboBox" DisplayMemberPath="RoleName"/>
@@ -51,7 +51,7 @@
         <TextBlock Grid.Row="8" Grid.Column="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center" Text="Повтор пароля: "/>
         <CheckBox Grid.Row="9" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 4 0"/>
 
-        <Border  Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Height="200" Width="180" HorizontalAlignment="Left" Margin="30 0 0 0" BorderThickness="2" BorderBrush="Black">
+        <Border  Grid.Column="3" Grid.Row="1" Grid.RowSpan="6" Height="200" Width="180" HorizontalAlignment="Left" Margin="30 0 0 0" BorderThickness="2" BorderBrush="Black" MouseDown="Image_MouseDown">
             <Image MouseDown="Image_MouseDown" Name="UserImage"/>
         </Border>
 
@@ -61,7 +61,7 @@
 
         <UniformGrid Columns="2" Grid.Row="10" Grid.Column="3">
             <Button Content="Ок" Margin="2" Click="Button_Click"/>
-            <Button Content="Отмена" Margin="2"/>
+            <Button Content="Отмена" Margin="2" Click="Button_Click_1"/>
         </UniformGrid>
     </Grid>
 </Window>

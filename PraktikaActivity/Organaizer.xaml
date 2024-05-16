@@ -19,8 +19,8 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Окно организатора"/>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-            <Image Width="140" Height="200"/>
-            <Button Content="Мой профиль" FontSize="15" Width="130" Height="60" VerticalAlignment="Bottom">
+            <Image Width="140" Height="200" Name="UserImage" Source="{Binding ImgPath}"/>
+            <Button Content="Мой профиль" FontSize="15" Width="130" Height="60" VerticalAlignment="Bottom" Click="Button_Click_1">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="15"/>
@@ -36,8 +36,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Width="300">
-                <TextBlock Text="Доброе утро" HorizontalAlignment="Center" FontSize="16"/>
-                <TextBlock Text="Имя" HorizontalAlignment="Center" FontSize="16"/>
+                <TextBlock Text="Доброе утро" HorizontalAlignment="Center" FontSize="16" Name="WelcomeText"/>
+                <TextBlock Text="Имя" HorizontalAlignment="Center" FontSize="16" Name="FIO"/>
             </StackPanel>
             <Button Grid.Row="1" Margin="5" Content="Мероприятия" FontSize="16">
                 <Button.Resources>

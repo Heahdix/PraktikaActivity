@@ -47,11 +47,31 @@ namespace PraktikaActivity
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
-            authorization.Show();
-            this.Close();
+
+            try
+            {
+                authorization.Show();
+
+                this.Close();
+            }
+            catch
+            {
+                this.Close();
+            }
+                
         }
 
         private void DirectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GenerateNewListView();
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            GenerateNewListView();
+        }
+
+        private void GenerateNewListView()
         {
             using (ActivityEntities activityEntities = new ActivityEntities())
             {
@@ -60,14 +80,18 @@ namespace PraktikaActivity
 
                     events = activityEntities.Events.Where(x => x.DirectionId == ((Directions)DirectionComboBox.SelectedItem).Id).ToList();
 
-                    EventsListView.ItemsSource = events;
                 }
                 else
                 {
                     events = activityEntities.Events.ToList();
-
-                    EventsListView.ItemsSource = events;
                 }
+
+                if (Date.SelectedDate != null)
+                {
+                    events = events.Where(x => DateTime.Compare(x.StartDate.Date, ((DateTime)Date.SelectedDate).Date) == 0).ToList();
+                }
+                EventsListView.ItemsSource = events;
+
             }
         }
     }

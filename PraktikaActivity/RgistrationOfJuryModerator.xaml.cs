@@ -21,7 +21,7 @@ namespace PraktikaActivity
     {
         private Users newUser = new Users();
 
-        private Regex _phoneNumberRegex = new Regex(@"^\+7\((\d{3})\)\s-\s(\d{3})-(\d{2})-(\d{2})$");
+        private static Regex _phoneNumberRegex = new Regex(@"^\+7\((\d{3})\)-(\d{3})-(\d{2})-(\d{2})$");
 
         private string photoName;
         private string filePath;
@@ -50,12 +50,15 @@ namespace PraktikaActivity
                 RoleComboBox.ItemsSource = roles;
 
                 DataContext = newUser;
+
+                int newID = (int)(activityEntities.Users.Max(x => (int?)x.Id) + 1);
+                NumberId.Text = newID.ToString();
             }
 
 
         }
 
-        public bool IsPhoneNumberValid(string phoneNumber)
+        public static bool IsPhoneNumberValid(string phoneNumber)
         {
             return _phoneNumberRegex.IsMatch(phoneNumber);
         }
@@ -90,7 +93,6 @@ namespace PraktikaActivity
             }
             if (hasDigit == false)
             {
-
                 return 0;
             }
             else if (hasLower == false)
@@ -167,7 +169,7 @@ namespace PraktikaActivity
         {
             if (FIO.Text != null && Email.Text != null && PhoneNumber.Text != null && UserPasswordBox.Password != null && DirectionComboBox.SelectedItem != null && GenderComboBox.SelectedItem != null && RoleComboBox.SelectedItem != null)
             {
-                if (IsPhoneNumberValid(PhoneNumber.Text))
+                if (!IsPhoneNumberValid(PhoneNumber.Text))
                 {
                     MessageBox.Show("Введите действительный номер телефона");
                 }
@@ -218,6 +220,10 @@ namespace PraktikaActivity
                             activityEntities.Users.Attach(newUser);
                             activityEntities.Entry(newUser).State = System.Data.Entity.EntityState.Added;
                             activityEntities.SaveChanges();
+
+                            Organaizer organaizer = new Organaizer();
+                            organaizer.Show();
+                            this.Close();
                         }
                     }
                 }
@@ -247,6 +253,13 @@ namespace PraktikaActivity
                 newPhotoName = i.ToString() + newPhotoName;
             }
             return newPhotoName;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Organaizer organaizer = new Organaizer();
+            organaizer.Show();
+            this.Close();
         }
     }
 

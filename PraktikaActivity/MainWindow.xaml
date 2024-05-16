@@ -24,7 +24,7 @@
             </UniformGrid>
             <UniformGrid Columns="2">
                 <TextBlock Text="Дата: " VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                <DatePicker Width="130" HorizontalAlignment="Left"/>
+                <DatePicker Width="130" HorizontalAlignment="Left" SelectedDateChanged="DatePicker_SelectedDateChanged" Name="Date"/>
             </UniformGrid>
         </StackPanel>
         <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="EventsListView">
